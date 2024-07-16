@@ -11,7 +11,7 @@ echo " | | | |_) | | | | | | (_) | \__ \ | |_  | (__  | | | | | (_| | | | | | | 
 echo " |_| | .__/  |_| |_|  \___/  |___/  \__|  \___| |_| |_|  \__,_| |_| |_|  \__, |  \___| |_|    "
 echo "     |_|                                                                 |___/                "
 echo "Autor: Jordi Gascon"
-echo "V1.1 -- 19/11/22  ----  Compatible con Ubuntu 20.04 y 22.04"
+echo "V1.2 -- 16/07/24  ----  Compatible con Ubuntu 20.04 y 22.04"
 echo "Cambia la IP y el host de tus máquinas clonadas en pocos segundos"
 echo "##############################################################################################"
 
@@ -20,9 +20,13 @@ echo "##########################################################################
 interf=enp0s3 #interfaz por defecto enp0s3
 defGateway=192.168.1.1
 defHostname=$(hostnamectl|grep hostname|cut -c19-50)
+# Autodetectamos la distribución de Linux y la versión
+distro_name=$(lsb_release -is)
+distro_version=$(lsb_release -rs)
 
 #PREGUNTA SI EL INTERFAZ POR DEFECTO ES enp0s3. EN CASO AFIRMATIVO PRESIONAR ENTER
 #SI NO LO ES INTRODUCIR "n" Y ESCRIBIR EL NOMBRE DEL INTERFAZ
+echo "Se ha detectado que estás utilizando >>>>>>    $distro_name $distro_version."
 echo "Tu interfaz es $interf ? (Y/n)"
 read changeInter
 if [ "$changeInter" == "n" ];
@@ -56,8 +60,16 @@ if [ "$newGateway" != "$defGateway" ] && [ "$newGateway" != "" ];
         defGateway=$newGateway
 fi
 
-#REEMPLAZA EL ARCHIVO YAML CON LOS NUEVOS VALORES
-ruta=/etc/netplan/00-installer-config.yaml
+#IDENTIFICA LA DISTRO Y REEMPLAZA EL ARCHIVO YAML CON LOS NUEVOS VALORES
+if [[ "$distro_version" == "20.04" || "$distro_version" == "22.04" ]]; then
+    ruta="/etc/netplan/00-installer-config.yaml"
+elif [[ "$distro_version" == "24.04" ]]; then
+    ruta="/etc/netplan/50-cloud-init.yaml"
+else
+    echo "Error: versión de distribución no soportada"
+    exit 1
+fi
+
 
 echo -e "network:" > $ruta
 echo -e "  ethernets:" >> $ruta
