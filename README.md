@@ -4,7 +4,7 @@
 # iphostchanger
 
 Este pequeño script está diseñado y pesnado para hacer cambio de IP y de nombre del host en máquinas virtuales clonadas o que son plantillas y al desplegarlas necesitas cambiar sus direcciones IP o nombres de host.\
-**SOLO COMPATIBLE CON UBUNTU 20.04 Y 22.04**
+**SOLO COMPATIBLE CON UBUNTU 20.04, 22.04 y 24.04**
 **ACTUALIZACIÓN A VERSIÓN 24.04**
 
 

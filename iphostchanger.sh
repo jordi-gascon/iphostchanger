@@ -1,7 +1,7 @@
 #!/bin/bash
 # Autor: Jordi Gascón
-# Versión 1.1 fecha de creación 18/11/22 fecha de revisión 19/11/22
-# Script para cambiar IP y nombe del host en versiones Ubuntu 20.04 y 22.04
+# Versión 1.2 fecha de creación 18/11/22 fecha de revisión 16/07/24
+# Script para cambiar IP y nombe del host en versiones Ubuntu 20.04, 22.04 y 24.04 (NUEVA UPDATE)
 # Comprobar el nombre del interfaz y hacer cambio si es necesario
 
 echo "  _           _                     _            _                                            "
@@ -11,7 +11,7 @@ echo " | | | |_) | | | | | | (_) | \__ \ | |_  | (__  | | | | | (_| | | | | | | 
 echo " |_| | .__/  |_| |_|  \___/  |___/  \__|  \___| |_| |_|  \__,_| |_| |_|  \__, |  \___| |_|    "
 echo "     |_|                                                                 |___/                "
 echo "Autor: Jordi Gascon"
-echo "V1.2 -- 16/07/24  ----  Compatible con Ubuntu 20.04 y 22.04"
+echo "V1.2 -- 16/07/24  ----  Compatible con Ubuntu 20.04, 22.04 y 24.04"
 echo "Cambia la IP y el host de tus máquinas clonadas en pocos segundos"
 echo "##############################################################################################"
 
